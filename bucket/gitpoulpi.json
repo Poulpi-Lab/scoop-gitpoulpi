@@ -1,0 +1,51 @@
+{
+    "##": [
+        "TEMPLATE, NOT PUBLISHED. see the release-and-packaging design (Scoop).",
+        "Replace 1.0.0 and 3ed429d268c46f62c72a7e76a209beeb67092aef63288bb9af569060be7a4646 (first field of gitpoulpi-<version>-x86_64-pc-windows-msvc.zip.sha256),",
+        "then commit this file as bucket/gitpoulpi.json of a bucket repository. checkver and autoupdate keep it current.",
+        "post_install rewrites the .gitpoulpi-dist marker with channel=scoop: GitPoulpi then runs `scoop update gitpoulpi` itself and never swaps files behind Scoop. gitpoulpi-updater.exe ships in the zip and needs no shim."
+    ],
+    "version": "1.0.0",
+    "description": "Git client for the terminal with a clickable commit graph, a command palette, hosting integrations, a CLI and an MCP server",
+    "homepage": "https://github.com/Poulpi-Lab/GitPoulpi",
+    "license": "MIT",
+    "notes": "GitPoulpi needs a system git on the PATH (Git for Windows, or `scoop install git`).",
+    "suggest": {
+        "git": "git"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Poulpi-Lab/GitPoulpi/releases/download/releases/v1.0.0/gitpoulpi-1.0.0-x86_64-pc-windows-msvc.zip",
+            "hash": "3ed429d268c46f62c72a7e76a209beeb67092aef63288bb9af569060be7a4646",
+            "extract_dir": "gitpoulpi-1.0.0-x86_64-pc-windows-msvc"
+        }
+    },
+    "bin": [
+        "gitpoulpi.exe",
+        "gitpoulpi-tui.exe",
+        "gitpoulpi-mcp.exe"
+    ],
+    "shortcuts": [
+        [
+            "gitpoulpi-launch.exe",
+            "GitPoulpi"
+        ]
+    ],
+    "post_install": "Set-Content -Path \"$dir\\.gitpoulpi-dist\" -Value \"version=$version\",\"target=x86_64-pc-windows-msvc\",\"channel=scoop\" -Encoding ascii",
+    "checkver": {
+        "url": "https://api.github.com/repos/Poulpi-Lab/GitPoulpi/releases/latest",
+        "jsonpath": "$.tag_name",
+        "regex": "releases/v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Poulpi-Lab/GitPoulpi/releases/download/releases/v$version/gitpoulpi-$version-x86_64-pc-windows-msvc.zip",
+                "hash": {
+                    "url": "$url.sha256"
+                },
+                "extract_dir": "gitpoulpi-$version-x86_64-pc-windows-msvc"
+            }
+        }
+    }
+}
