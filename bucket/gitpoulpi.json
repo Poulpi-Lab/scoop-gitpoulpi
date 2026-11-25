@@ -1,11 +1,11 @@
 {
     "##": [
         "TEMPLATE, NOT PUBLISHED. see the release-and-packaging design (Scoop).",
-        "Replace 1.2.0 and 4e2e23c4cee7e62c763ef197796104d389f2c36249183a2dbe86c4688071ba30 (first field of gitpoulpi-<version>-x86_64-pc-windows-msvc.zip.sha256),",
+        "Replace 1.3.0 and 8d5764903181f9d0037b22a4cdd263e0b66eb5374fc23760e23ffc31c38993f2 (first field of gitpoulpi-<version>-x86_64-pc-windows-msvc.zip.sha256),",
         "then commit this file as bucket/gitpoulpi.json of a bucket repository. checkver and autoupdate keep it current.",
         "post_install rewrites the .gitpoulpi-dist marker with channel=scoop: GitPoulpi then runs `scoop update gitpoulpi` itself and never swaps files behind Scoop. pre_uninstall (only for a real uninstall, not for the old version of an update) removes this installation's launchers, aliases and folder-menu entries (the files are Scoop's). gitpoulpi-updater.exe ships in the zip and needs no shim."
     ],
-    "version": "1.2.0",
+    "version": "1.3.0",
     "description": "Git client for the terminal with a clickable commit graph, a command palette, hosting integrations, a CLI and an MCP server",
     "homepage": "https://github.com/Poulpi-Lab/GitPoulpi",
     "license": "MIT",
@@ -15,9 +15,9 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Poulpi-Lab/GitPoulpi/releases/download/releases/v1.2.0/gitpoulpi-1.2.0-x86_64-pc-windows-msvc.zip",
-            "hash": "4e2e23c4cee7e62c763ef197796104d389f2c36249183a2dbe86c4688071ba30",
-            "extract_dir": "gitpoulpi-1.2.0-x86_64-pc-windows-msvc"
+            "url": "https://github.com/Poulpi-Lab/GitPoulpi/releases/download/releases/v1.3.0/gitpoulpi-1.3.0-x86_64-pc-windows-msvc.zip",
+            "hash": "8d5764903181f9d0037b22a4cdd263e0b66eb5374fc23760e23ffc31c38993f2",
+            "extract_dir": "gitpoulpi-1.3.0-x86_64-pc-windows-msvc"
         }
     },
     "bin": [
